@@ -113,7 +113,7 @@ async def websocket_endpoint(websocket: WebSocket, user_id: str):
             # Forward the message to the partner
             partner_id = active_connections[user_id].partner
             if partner_id and partner_id in active_connections:
-                await manager.send_message(partner_id, f"Message from {user_id}: {data}")
+                await manager.send_message(partner_id, f"{data}")
             else:
                 await websocket.send_text("Your partner is no longer connected.")
     except asyncio.TimeoutError:
