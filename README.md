@@ -77,3 +77,19 @@ kubectl delete -f taptalk-ingress.yaml
 ## Notes
 
 - Ensure that the `taptalk-ingress.yaml` file is configured correctly for your environment.
+
+## Contributing
+
+We welcome contributions to TapTalk! If you have an idea for a new feature, bug fix, or improvement, please follow these steps:
+
+1. Fork the repository and create a new branch for your changes.
+2. Make your changes and ensure they are well-tested.
+3. Submit a pull request with a clear description of your changes and the problem they solve.
+
+### Guidelines
+
+- Follow the existing code style and structure.
+- Write clear and concise commit messages.
+- Ensure your code passes all tests and linting checks.
+
+Thank you for contributing to TapTalk!
