@@ -1,7 +1,8 @@
 name: Build and publish web image
 on:
   push:
-    branches: [ "main" ]
+    paths:
+      - tap-talk-front/**
 jobs:
   build:
     runs-on: ubuntu-latest
