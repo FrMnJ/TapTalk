@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image Web
+      run: docker build ./tap-talk-front --file Dockerfile --tag frmnj/taptalk-taptalk-web:latest
+    - uses: actions/checkout@v4
+    - name: Build the Docker image Chat
+      run: docker build ./tap-talk-front --file Dockerfile --tag frmnj/taptalk-chat-service:latest
