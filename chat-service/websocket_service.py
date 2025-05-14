@@ -47,8 +47,8 @@ async def match_users():
 
             # Notify both users
             if user1 in active_connections and user2 in active_connections:
-                await active_connections[user1].websocket.send_text(f"You are now connected to user {user2}. Start chatting!")
-                await active_connections[user2].websocket.send_text(f"You are now connected to user {user1}. Start chatting!")
+                await active_connections[user1].websocket.send_text(f"You are now connected to user {user2}.")
+                await active_connections[user2].websocket.send_text(f"You are now connected to user {user1}.")
 
                 # Pair the users
                 active_connections[user1].partner = user2
@@ -103,7 +103,7 @@ async def websocket_endpoint(websocket: WebSocket, user_id: str):
     try:
         while True:
             data = await asyncio.wait_for(websocket.receive_text(), timeout=INACTIVITY_TIMEOUT)
-            logging.info(f"Message from user {user_id}: {data}")
+            logging.info(f"{data}")
 
             if data == "next":
                 await manager.next_chat(user_id)
