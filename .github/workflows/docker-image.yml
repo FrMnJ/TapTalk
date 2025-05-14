@@ -12,7 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image Web
-      run: docker build ./tap-talk-front --file Dockerfile --tag frmnj/taptalk-taptalk-web:latest
+      working-directory: ./tap-talk-front
+      run: docker build --file Dockerfile --tag frmnj/taptalk-taptalk-web:latest
     - uses: actions/checkout@v4
     - name: Build the Docker image Chat
-      run: docker build ./chat-service --file Dockerfile --tag frmnj/taptalk-chat-service:latest
+      working-directory: ./chat-service
+      run: docker build --file Dockerfile --tag frmnj/taptalk-chat-service:latest
