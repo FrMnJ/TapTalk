@@ -25,7 +25,7 @@ app.add_middleware(
 )
 
 # Connect to Redis
-redis_client = redis.StrictRedis(host='redis-service', port=6379, decode_responses=True)
+redis_client = redis.StrictRedis(host='redis', port=6379, decode_responses=True)
 
 # Active connections
 active_connections = {}
