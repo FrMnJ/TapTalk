@@ -15,4 +15,4 @@ jobs:
       run: docker build ./tap-talk-front --file Dockerfile --tag frmnj/taptalk-taptalk-web:latest
     - uses: actions/checkout@v4
     - name: Build the Docker image Chat
-      run: docker build ./tap-talk-front --file Dockerfile --tag frmnj/taptalk-chat-service:latest
+      run: docker build ./chat-service --file Dockerfile --tag frmnj/taptalk-chat-service:latest
