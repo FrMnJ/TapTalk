@@ -8,7 +8,7 @@ export default function HomePage() {
         <div className="flex items-center justify-between w-full">
           <Link to="/" className="flex items-center gap-2 font-semibold">
             <MessageSquare className="h-6 w-6" />
-            <span>TextChat</span>
+            <span>TapTalk</span>
           </Link>
           <nav className="flex gap-4 sm:gap-6">
             <a href="#" className="text-sm font-medium hover:underline underline-offset-4">
@@ -33,14 +33,14 @@ export default function HomePage() {
               Iniciar Chat
             </button>
           </Link>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-zinc-500 mt-6">
             Al hacer clic en "Iniciar Chat", aceptas nuestros términos de servicio.
           </p>
         </div>
       </main>
       <footer className="border-t py-6 px-4 lg:px-6">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="text-xs text-zinc-500">© 2025 TextChat. Todos los derechos reservados.</p>
+          <p className="text-xs text-zinc-500">© 2025 TapTalk. Todos los derechos reservados.</p>
           <nav className="flex gap-4 sm:gap-6">
             <a href="#" className="text-xs hover:underline underline-offset-4">
               Privacidad

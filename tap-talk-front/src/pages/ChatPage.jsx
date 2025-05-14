@@ -113,7 +113,7 @@ export default function ChatPage() {
         <div className="flex items-center justify-between w-full">
           <Link to="/" className="flex items-center gap-2 font-semibold">
             <MessageSquare className="h-6 w-6" />
-            <span>TextChat</span>
+            <span>TapTalk</span>
           </Link>
           <Link to="/">
             <button className="p-2 rounded-full hover:bg-zinc-100">
@@ -128,16 +128,10 @@ export default function ChatPage() {
           {messages.length === 0 && !connecting && (
             <div className="h-full flex flex-col items-center justify-center text-center p-4">
               <MessageSquare className="h-12 w-12 mb-4 text-zinc-400" />
-              <h2 className="text-xl font-semibold mb-2">Bienvenido a TextChat</h2>
+              <h2 className="text-xl font-semibold mb-2">Bienvenido a TapTalk</h2>
               <p className="text-zinc-500 max-w-md mb-6">
                 Haz clic en "Nuevo Chat" para conectarte con un extraño y comenzar a chatear.
               </p>
-              <button
-                onClick={connectToStranger}
-                className="px-4 py-2 rounded-md bg-black text-white font-medium hover:bg-black/90 transition-colors"
-              >
-                Nuevo Chat
-              </button>
             </div>
           )}
 
