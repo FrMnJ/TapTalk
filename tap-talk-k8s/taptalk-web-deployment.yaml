@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taptalk-web
+  labels:
+    app: taptalk-web
+spec:
+  replicas: 2  # Dos réplicas para alta disponibilidad
+  selector:
+    matchLabels:
+      app: taptalk-web
+  template:
+    metadata:
+      labels:
+        app: taptalk-web
+    spec:
+      containers:
+      - name: taptalk-web
+        image: frmnj/taptalk-taptalk-web:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000               # Puerto donde corre tu React (normalmente 80 o 3000)
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5

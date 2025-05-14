@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: taptalk-web
+spec:
+  selector:
+    app: taptalk-web  # Debe coincidir con las labels del Deployment
+  ports:
+    - protocol: TCP
+      port: 80        # Puerto del Service
+      targetPort: 3000  # Puerto del contenedor
+  type: LoadBalancer  # Para acceso externo (NodePort en desarrollo local)
