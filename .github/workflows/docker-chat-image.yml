@@ -1,0 +1,21 @@
+name: Build and publish chat service image
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Build the Docker image
+      working-directory: ./chat-service
+      run: docker build --file Dockerfile --tag frmnj/taptalk-chat-service:latest .
+
+    - name: Docker Hub Login
+      run: docker login -u frmnj -p ${{ secrets.DOCKER_HUB_TOKEN }}
+
+    - name: Push the image to Docker Hub
+      run: |
+        docker push frmnj/taptalk-chat-service:latest
