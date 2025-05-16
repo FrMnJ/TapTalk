@@ -2,6 +2,8 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 import asyncio
 import redis
 import logging
+import random
+import os
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 # Configure logging
@@ -97,6 +99,10 @@ manager = ConnectionManager()
 
 @app.websocket("/ws/{user_id}")
 async def websocket_endpoint(websocket: WebSocket, user_id: str):
+    # Simular fallo del 20% al conectar (caída total del servidor)
+    if random.random() < 0.2:
+        logging.critical(f"Simulación de fallo crítico: el servidor se cae para el usuario {user_id}")
+        os._exit(1)
     connection = Connection(websocket)
     active_connections[user_id] = connection
     await manager.connect(websocket, user_id)
