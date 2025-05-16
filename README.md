@@ -84,7 +84,7 @@ Other terminal
  minikube tunnel -c
 ```
 
-### 9. Open kiali dashboard
+### 8. Open kiali dashboard
 ```
 istioctl dashboard kiali
 ```
@@ -98,7 +98,7 @@ yaml
 ![image](https://github.com/user-attachments/assets/a3eb0bc4-b7b5-4af3-a43c-b404141b6ed5)
 
 
-### 10. Clean Up
+### 9. Clean Up
 
 To delete the resources created, run:
 ```bash
