@@ -1,5 +1,5 @@
 # TapTalk
-TapTalk is a simple chat application built with React and Python WebSocket. It is similar to Omegle but based in text. It allow users to chat with random people. The application is designed to be easy to use and deploy, making it a great choice for anyone looking to add a chat feature to their website or application.
+TapTalk is a simple chat application built with React and Python WebSocket. It is similar to Omegle but based in text. It allow users to chat with random people. The application is designed to be easy to use and deploy.
 
 # Getting Started with TapTalk
 
