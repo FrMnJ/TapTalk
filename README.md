@@ -1,5 +1,5 @@
 # TapTalk
-TapTalk is a simple chat application built with React and Python WebSocket. It is similar to Omegle but based in text. It allow users to chat with random people. The application is designed to be easy to use and deploy, making it a great choice for anyone looking to add a chat feature to their website or application.
+TapTalk is a simple chat application built with React and Python WebSocket. It is similar to Omegle but based in text. It allow users to chat with random people. The application is designed to be easy to use and deploy.
 
 # Getting Started with TapTalk
 
@@ -9,8 +9,9 @@ This guide will walk you through deploying the TapTalk application using Kuberne
 
 1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/).
 2. Install [Minikube](https://minikube.sigs.k8s.io/docs/start/) or have access to a Kubernetes cluster.
-3. Ensure Docker is installed and running.
-4. Clone the TapTalk repository to your local machine.
+3. Install [Istio](https://istio.io/latest/docs/setup/getting-started/#download) for monitoring.
+4. Ensure Docker is installed and running.
+5. Clone the TapTalk repository to your local machine.
 
 ## Steps
 
@@ -19,7 +20,17 @@ This guide will walk you through deploying the TapTalk application using Kuberne
 minikube start
 ```
 
-### 2. Apply Kubernetes Manifests
+### 2. Install a demo of Istio
+```bash
+istioctl install --set profile=demo -y
+```
+
+### 3. Add a label for Istio injection
+```bash
+kubectl label namespace default istio-injection=enabled
+```
+
+### 4. Apply Kubernetes Manifests
 
 Navigate to the `tap-talk-k8s` directory and apply the Kubernetes manifests:
 
@@ -32,7 +43,7 @@ kubectl apply -f taptalk-web-service.yaml
 kubectl apply -f taptalk-ingress.yaml
 ```
 
-### 3. Verify Deployments and Services
+### 5. Verify Deployments and Services
 
 Check the status of the deployments:
 ```bash
@@ -44,7 +55,7 @@ Check the status of the services:
 kubectl get services
 ```
 
-### 4. Access the Application
+### 6. Access the Application
 
 If you are using Minikube, enable the ingress addon:
 ```bash
@@ -63,7 +74,31 @@ Add the following entry to your `/etc/hosts` file (replace `<minikube-ip>` with 
 
 Access the application in your browser at `http://taptalk.net`.
 
-### 5. Clean Up
+### 7. Opening for services
+In one terminal:
+```bash
+kubectl port-forward service/chat-service 8765:8765
+```
+Other terminal
+```bash
+ minikube tunnel -c
+```
+
+### 8. Open kiali dashboard
+```
+istioctl dashboard kiali
+```
+If kiali wasn't install run  and run again the above:
+```
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.26/samples/addons/kiali.
+yaml
+```
+
+#### Preview Istio
+![image](https://github.com/user-attachments/assets/a3eb0bc4-b7b5-4af3-a43c-b404141b6ed5)
+
+
+### 9. Clean Up
 
 To delete the resources created, run:
 ```bash
