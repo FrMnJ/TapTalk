@@ -1,5 +1,5 @@
 from flask_cors import CORS, cross_origin
-from flask import request
+from flask import Flask, request
 from flask import json
 
 from spanlp.palabrota import Palabrota
