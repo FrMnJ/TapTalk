@@ -8,5 +8,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80        # Puerto del Service
-      targetPort: 3000  # Puerto del contenedor
+      targetPort: 8080  # Puerto del contenedor
   type: LoadBalancer  # Para acceso externo (NodePort en desarrollo local)
