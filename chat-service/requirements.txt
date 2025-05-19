@@ -4,3 +4,4 @@ redis
 logging
 uvicorn
 fastapi[standard]
+httpx

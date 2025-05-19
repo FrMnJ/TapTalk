@@ -4,6 +4,7 @@ import redis
 import logging
 import random
 import os
+import httpx
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 # Configure logging
@@ -116,10 +117,26 @@ async def websocket_endpoint(websocket: WebSocket, user_id: str):
                 await websocket.send_text("Searching for a new chat partner...")
                 continue
 
-            # Forward the message to the partner
+            # Censor the message before forwarding
+            censored_message = data
+            try:
+                async with httpx.AsyncClient() as client:
+                    response = await client.post(
+                        "http://censor-service/censor",
+                        json={"message": data},
+                        timeout=5.0
+                    )
+                    if response.status_code == 200:
+                        resp_json = response.json()
+                        if resp_json.get("success") and "data" in resp_json:
+                            censored_message = resp_json["data"].get("censored", data)
+            except Exception as e:
+                logging.error(f"Censor service error: {e}")
+
+            # Forward the censored message to the partner
             partner_id = active_connections[user_id].partner
             if partner_id and partner_id in active_connections:
-                await manager.send_message(partner_id, f"{data}")
+                await manager.send_message(partner_id, f"{censored_message}")
             else:
                 await websocket.send_text("Your partner is no longer connected.")
     except asyncio.TimeoutError:
