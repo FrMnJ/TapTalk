@@ -2,7 +2,7 @@ name: Build and publish censor service image
 on:
   push:
     paths:
-      - censor_service/**
+      - censor-service/**
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build the Docker image
-      working-directory: ./censor_service
+      working-directory: ./censor-service
       run: docker build --file Dockerfile --tag frmnj/taptalk-censor-service:latest .
 
     - name: Docker Hub Login
