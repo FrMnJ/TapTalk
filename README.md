@@ -43,6 +43,8 @@ kubectl apply -f taptalk-web-service.yaml
 kubectl apply -f taptalk-ingress.yaml
 kubectl apply -f taptalk-censor-deployment.yaml
 kubectl apply -f taptalk-censor-hpa.yaml
+kubectl apply -f chat-service-hpa.yaml
+kubectl apply -f taptalk-web-hpa.yaml
 ```
 
 ### 5. Verify Deployments and Services
@@ -111,10 +113,14 @@ kubectl delete -f taptalk-web-service.yaml
 kubectl delete -f taptalk-ingress.yaml
 kubectl delete -f taptalk-censor-deployment.yaml
 kubectl delete -f taptalk-censor-hpa.yaml
+kubectl delete -f chat-service-hpa.yaml
+kubectl delete -f taptalk-web-hpa.yaml
 ```
 
 ## Notes
 
+- Both `chat-service` and `taptalk-web` deployments now include resource requests and limits for CPU and memory.
+- Horizontal Pod Autoscalers (HPA) are configured for both services. See `chat-service-hpa.yaml` and `taptalk-web-hpa.yaml` in the `tap-talk-k8s` directory.
 - Ensure that the `taptalk-ingress.yaml` file is configured correctly for your environment.
 
 ## Contributing
