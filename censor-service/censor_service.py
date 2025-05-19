@@ -15,7 +15,7 @@ def censor():
         in_message = body['message']
 
         if in_message and len(str(in_message).strip()):
-            palabrota = Palabrota()
+            palabrota = Palabrota(censor_char='*')
             censored = palabrota.censor(in_message)
             response = {
                 "success": True,
