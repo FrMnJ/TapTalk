@@ -41,6 +41,8 @@ kubectl apply -f chat-service-service.yaml
 kubectl apply -f taptalk-web-deployment.yaml
 kubectl apply -f taptalk-web-service.yaml
 kubectl apply -f taptalk-ingress.yaml
+kubectl apply -f taptalk-censor-deployment.yaml
+kubectl apply -f taptalk-censor-hpa.yaml
 ```
 
 ### 5. Verify Deployments and Services
@@ -107,6 +109,8 @@ kubectl delete -f chat-service-service.yaml
 kubectl delete -f taptalk-web-deployment.yaml
 kubectl delete -f taptalk-web-service.yaml
 kubectl delete -f taptalk-ingress.yaml
+kubectl delete -f taptalk-censor-deployment.yaml
+kubectl delete -f taptalk-censor-hpa.yaml
 ```
 
 ## Notes

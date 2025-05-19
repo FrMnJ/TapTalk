@@ -1,0 +1,6 @@
+POST http://localhost:8080/censor
+Content-Type: application/json
+
+{
+  "message": "This is a test message with a badword."
+}
