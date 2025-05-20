@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: taptalk-virtualservice
+spec:
+  hosts:
+  - "taptalk.net"
+  gateways:
+  - taptalk-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/ws"
+    route:
+    - destination:
+        host: chat-service
+        port:
+          number: 8765
+  - match:
+    - uri:
+        prefix: "/"
+    route:
+    - destination:
+        host: taptalk-web
+        port:
+          number: 80
