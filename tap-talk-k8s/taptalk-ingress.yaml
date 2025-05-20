@@ -12,7 +12,7 @@ metadata:
     nginx.ingress.kubernetes.io/connection-proxy-header: "upgrade"
 spec:
   rules:
-  - host: taptalk.net
+  - host: taptalk.tech
     http:
       paths:
       - path: /
