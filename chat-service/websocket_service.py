@@ -121,8 +121,8 @@ async def websocket_endpoint(websocket: WebSocket, user_id: str):
                     async with httpx.AsyncClient() as client:
                         response = await client.get("http://question-service/get-random-question", timeout=5.0)
                         if response.status_code == 200:
-                            question = response.json()
-                            
+                            question = response.json().get("question", "¿Qué te gustaría preguntar?")
+                        
                             await websocket.send_text(f"[Pregunta para ambos] {question}")
                             partner_id = active_connections[user_id].partner
                             if partner_id and partner_id in active_connections:
