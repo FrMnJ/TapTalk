@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: question-service
-        image: frmnj/question-service:latest
+        image: frmnj/taptalk-question-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
