@@ -1,9 +1,20 @@
-FROM python:3.11-slim
+# Use the official Python image as the base image
+FROM python:3.12-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
-COPY question_service.py .
+# Copy the requirements file to the container
+COPY requirements.txt .
 
-RUN pip install --no-cache-dir fastapi uvicorn
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "question_service.py"]
+# Copy the application code to the container
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Command to run the FastAPI application
+CMD ["fastapi", "run", "--host", "0.0.0.0", "--port", "8080"]
