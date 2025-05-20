@@ -9,4 +9,4 @@ spec:
     - protocol: TCP
       port: 80        # Puerto del Service
       targetPort: 8080  # Puerto del contenedor
-  type: LoadBalancer  # Para acceso externo (NodePort en desarrollo local)
+  type: ClusterIP  # Use ClusterIP for internal access; expose externally only via Ingress
