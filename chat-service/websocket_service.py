@@ -116,6 +116,23 @@ async def websocket_endpoint(websocket: WebSocket, user_id: str):
                 await manager.next_chat(user_id)
                 await websocket.send_text("Searching for a new chat partner...")
                 continue
+            if data == "/question":
+                try:
+                    async with httpx.AsyncClient() as client:
+                        response = await client.get("http://question-service/get-random-question", timeout=5.0)
+                        if response.status_code == 200:
+                            question = response.json()
+                            
+                            await websocket.send_text(f"[Pregunta para ambos] {question}")
+                            partner_id = active_connections[user_id].partner
+                            if partner_id and partner_id in active_connections:
+                                await manager.send_message(partner_id, f"[Pregunta para ambos] {question}")
+                        else:
+                            await websocket.send_text("No se pudo obtener una pregunta en este momento.")
+                except Exception as e:
+                    logging.error(f"Error al obtener pregunta: {e}")
+                    await websocket.send_text("Error al conectar con el servicio de preguntas.")
+                continue
 
             # Censor the message before forwarding
             censored_message = data
