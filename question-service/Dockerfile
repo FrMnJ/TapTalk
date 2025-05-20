@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8080
 
 # Command to run the FastAPI application
-CMD ["fastapi", "run", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["python", "question_service.py"]
