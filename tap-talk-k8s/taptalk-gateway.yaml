@@ -11,4 +11,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "taptalk.tech"
+    - "taptalk.udgpath24.tech"

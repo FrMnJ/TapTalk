@@ -4,7 +4,7 @@ metadata:
   name: taptalk-virtualservice
 spec:
   hosts:
-  - "taptalk.tech"
+  - "taptalk.udgpath24.tech"
   gateways:
   - taptalk-gateway
   http:
