@@ -67,7 +67,7 @@ export default function ChatPage() {
   const connectToServer = () => {
     setConnecting(true);
     setMessages([]);
-    const ws = new WebSocket(`ws://taptalk.net:8765/ws/${userId.current}`);
+    const ws = new WebSocket(`ws://taptalk.udgpath24.tech/ws/${userId.current}`);
     setWebsocket(ws);
   };
 

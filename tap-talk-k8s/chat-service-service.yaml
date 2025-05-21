@@ -5,11 +5,10 @@ metadata:
   labels:
     app: chat-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: chat-service  # Debe coincidir con las labels del Deployment
   ports:
     - name: websocket
       port: 8765       # Puerto del Service (accesible dentro del cluster)
       targetPort: 8765 # Puerto del contenedor (donde escucha tu backend)
-      nodePort: 31000 # Puerto externo para la conexión de websocket
