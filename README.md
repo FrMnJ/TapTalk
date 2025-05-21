@@ -76,10 +76,10 @@ minikube ip
 
 Add the following entry to your `/etc/hosts` file (replace `<minikube-ip>` with the IP from the previous command):
 ```
-<minikube-ip> taptalk.net
+<minikube-ip> taptalk.tech
 ```
 
-Access the application in your browser at `http://taptalk.net`.
+Access the application in your browser at `http://taptalk.tech`.
 
 ### 7. Opening for services
 In one terminal:
@@ -121,6 +121,18 @@ kubectl delete -f taptalk-web-hpa.yaml
 kubectl delete -f taptalk-question-deployment.yaml
 kubectl delete -f taptalk-question-service.yaml
 kubectl delete -f taptalk-question-hpa.yaml
+```
+
+### Deploy Azure
+```bash
+az login
+az group create --name taptalk-rg --location eastus
+az aks create --resource-group taptalk-rg --name taptalk-aks --node-count 1 --node-vm-size Standard_B2s --generate-ssh-keys
+az aks get-credentials --resource-group taptalk-rg --name taptalk-aks
+istioctl install --set profile=demo -y
+kubectl label namespace default istio-injection=enabled
+az aks get-credentials --resource-group taptalk-rg --name taptalk-aks --overwrite-existing
+kubectl apply -f tap-talk-k8s/
 ```
 
 ## Notes
