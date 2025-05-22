@@ -5,6 +5,21 @@ TapTalk is a simple chat application built with React and Tailwind CSS for the f
 
 This guide will walk you through deploying the TapTalk application using Kubernetes. The deployment includes the chat-service, Redis, and the TapTalk frontend.
 
+# Core Services of TapTalk
+
+TapTalk is powered by several key microservices, each responsible for a specific functionality within the app:
+
+- **Chat Service**:
+ This service handles real-time text communication between users, enabling instant messaging in a simple and scalable way.
+
+- **Question Service**:
+ When a user types the /question command, this service sends a random, engaging question designed to help users get to know each other better, fostering meaningful conversations.
+
+- **Censor Service**:
+ To maintain a safe and respectful environment, this service automatically detects and censors inappropriate or offensive language in chat messages.
+
+These services are containerized and orchestrated using Kubernetes, ensuring that TapTalk is scalable, fault-tolerant, and easy to maintain.
+
 ## Prerequisites
 
 1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/).
