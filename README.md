@@ -135,11 +135,19 @@ az aks get-credentials --resource-group taptalk-rg --name taptalk-aks --overwrit
 kubectl apply -f tap-talk-k8s/
 ```
 
-## Notes
+## Preview
+### Live Chat Support
+Instant messaging with others in real-time.
+![image](https://github.com/user-attachments/assets/c161fdbd-7f04-4dcd-8295-44316bf2c915)
 
-- Both `chat-service` and `taptalk-web` deployments now include resource requests and limits for CPU and memory.
-- Horizontal Pod Autoscalers (HPA) are configured for both services. See `chat-service-hpa.yaml` and `taptalk-web-hpa.yaml` in the `tap-talk-k8s` directory.
-- Ensure that the `taptalk-ingress.yaml` file is configured correctly for your environment.
+### Content Moderation System
+Automatically filters and censors inappropriate messages.
+![image](https://github.com/user-attachments/assets/4a3f6a27-e42c-4207-89f0-2cb7fcc3c11d)
+
+### Random Question Generator
+Sends engaging, thought-provoking questions during chat using the /question command. 
+![image](https://github.com/user-attachments/assets/f9008e6c-36b0-412f-9464-0fcc743920a0)
+
 
 ## Contributing
 
